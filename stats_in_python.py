@@ -2,10 +2,25 @@ import sys
 import math
 
 def load_data(filepath:str, column:int)->tuple[list, int]:
+    """
+    Read one column of a tab-delimited file.
+    """
+    
     # TODO - Complete the function so it loads the data from the file into a list
     # The function returns a tuple that contains the list of values and the total number 
     # of values in the column
-    pass
+    try:
+        with open(filepath, 'r') as infile:
+            for line in infile:
+            line_number += 1
+            line = line.strip()         #This will remove the newline at the end
+            if line == "":
+                continue
+            
+            try:
+                num = float(value)
+            except ValueError:
+                continue    # if not a number, skip it
 
 def calculate_average(numbers:list)->float:
     # TODO - Complete the function to return the average of the list of numbers
