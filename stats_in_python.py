@@ -27,12 +27,14 @@ def load_data(filepath:str, column:int)->tuple[list, int]:
                     sys.exit(1)
                     
                 total_values += 1
-                   
+                
+                #Stores numeric values as floats   
                 try:
                     num = float(value)
                 except ValueError:
-                    continue
+                    continue        #if not a number, skip it
                    
+                #float ("NaN") does not cause an error, so it'll skip separately   
                 if math.isnan(num):
                     continue
                    
@@ -70,11 +72,10 @@ def get_max_and_min(numbers:list)->tuple[float, float]:
     
 
 def calculate_variance(numbers:list)->float:
-    # TODO - Complete the function to return the variance of the numbers in the list
     #Sample variance = sum of (x - average)^2 / (n -1)
     n = len(numbers)
     if n < 2:
-        return 0.0
+        return 0.0      #only one value: no spread and avoids dividing by zero
     average = calculate_average(numbers)
     squared_diffs = 0.0
     for num in numbers:
@@ -83,11 +84,11 @@ def calculate_variance(numbers:list)->float:
    
 
 def calculate_std_dev(numbers:list)->float:
-    # TODO - Complete the function to return the standard deviation of the numbers in the list
+    # standard deviation = square root of variance
     return math.sqrt(calculate_variance(numbers))
 
 def calculate_median(number:list)->float:
-    # TODO - Complete the function to return the median of the numbers in the list
+    # The numbers get sorted first, then find the middle
     sorted_nums = sorted(number)
     n = len(sorted_nums)
     middle = n // 2
@@ -96,9 +97,8 @@ def calculate_median(number:list)->float:
     return (sorted_nums[middle - 1] + sorted_nums[middle]) / 2 #even: average of two middle values
 
 def print_stats(filepath: str, column: int) -> None:
-    """
-    Display the summary statistics in the required output format.
-    """
+    #Display the summary statistics in the required output format.
+    
     print(filepath)
     print(f"Column: {column}\n")
     
