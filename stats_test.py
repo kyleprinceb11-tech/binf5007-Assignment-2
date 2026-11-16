@@ -141,8 +141,8 @@ class TestCalculateVariance:
         assert calculate_variance(single_element) == pytest.approx(0.0)
 
     def test_variance_negatives(self, negative_list):
-        """Variance of [-3,-1,0,2,4] = 7.8 (sample variance, n-1: mean=0.4)"""
-        assert calculate_variance(negative_list) == pytest.approx(7.8)
+        """Variance of [-3,-1,0,2,4] = 7.3 (sample variance, n-1: mean=0.4)"""
+        assert calculate_variance(negative_list) == pytest.approx(7.3)
 
     def test_variance_non_negative(self, float_list):
         """Variance must always be >= 0"""
